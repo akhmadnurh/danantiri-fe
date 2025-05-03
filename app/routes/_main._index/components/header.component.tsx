@@ -1,6 +1,9 @@
-import { Button } from "~/components/ui/button";
+import ContributeModalComponent from "./contribute-modal.component";
+import { useState } from "react";
 
 const HeaderSectionComponent = () => {
+  const [isContributeModalOpen, setIsContributeModalOpen] = useState(false);
+
   return (
     <div className="flex flex-col items-center justify-center bg-gray-100 gap-3 py-10">
       <img src="/images/tiri.png" alt="logo" className="h-80" />
@@ -11,9 +14,11 @@ const HeaderSectionComponent = () => {
         Your allocated fund will be pooled and distributed to impactful
         programs.
       </span>
-      <Button variant={"destructive"} size={"lg"} className="mt-2">
-        Contribute
-      </Button>
+
+      <ContributeModalComponent
+        isOpen={isContributeModalOpen}
+        onClose={(value: boolean) => setIsContributeModalOpen(value)}
+      />
     </div>
   );
 };
